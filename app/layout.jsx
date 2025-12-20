@@ -1,8 +1,9 @@
 import React from "react";
 
 //CSS Imports
+import Navbar from "@/components/Navbar";
 import "@/assets/globals.css";
-import { Poppins } from "next/font/google";
+import { Poppins, Gabarito } from "next/font/google";
 
 export const metadata = {
   title: "assembl | Home",
@@ -17,10 +18,19 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const gabarito = Gabarito({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
 const MainLayout = ({ children }) => {
   return (
-    <html className={`${poppins.variable}`}>
-      <body>{children}</body>
+    <html className={`${poppins.variable} ${gabarito.variable}`}>
+      <body>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 };
