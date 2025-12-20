@@ -1,3 +1,10 @@
+:root{
+    --primary: #22577A;
+    --secondary: #38A3A5;
+    --accent: #80ED99;
+    --light-bg: #C7F9CC;
+}
+
 *,
 *::before,
 *::after {
@@ -8,4 +15,13 @@
 
 body{
     font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+ul{
+    list-style-type: none;
 }
