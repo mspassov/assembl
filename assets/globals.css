@@ -1,6 +1,7 @@
 :root{
     --primary: #22577A;
     --secondary: #38A3A5;
+    --tertiary: #57CC99;
     --accent: #80ED99;
     --light-bg: #C7F9CC;
 }
@@ -17,6 +18,12 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+h2{
+    margin: 2rem 0;
+    text-align: center;
+    color:rgb(54, 54, 54);
+}
+
 .container{
     max-width: 1200px;
     margin: 0 auto;
@@ -24,4 +31,17 @@ body{
 
 ul{
     list-style-type: none;
+}
+
+.links{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Button Common styles */
+.btn{
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
 }

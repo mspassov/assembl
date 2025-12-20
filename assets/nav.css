@@ -1,5 +1,5 @@
 nav{
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(244, 244, 244);
 }
 
 nav #logo{
@@ -17,6 +17,7 @@ nav .logo-container{
 
 }
 
+
 nav .logo-img{
     width: 50px;
     height: auto;
@@ -30,5 +31,26 @@ nav .nav-container{
 
 nav .link-container{
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
+}
+
+nav .link-container li{
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+
+    &:hover{
+        color: var(--secondary);
+    }
+}
+
+nav .log-in-btn{
+    border-radius: 12px;
+    padding: 0.5rem 1.2rem;
+    background-color: var(--tertiary);
+    color: white;
+
+    &:hover{
+        background-color: #45a078;
+    }
 }
