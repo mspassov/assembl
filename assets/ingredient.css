@@ -1,0 +1,16 @@
+.ingredient-container .ingredient{
+    border-radius: 16px;
+    padding: 0.3rem 0.8rem;
+    background-color: var(--light-bg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.xmark{
+    color: rgb(255, 112, 112);
+
+    &:hover{
+        cursor: pointer;
+    }
+}
