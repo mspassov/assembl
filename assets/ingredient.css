@@ -4,11 +4,12 @@
     background-color: var(--light-bg);
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
 }
 
 .xmark{
     color: rgb(255, 112, 112);
+    font-size: 1rem;
 
     &:hover{
         cursor: pointer;

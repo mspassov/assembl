@@ -11,8 +11,12 @@ const IngredientForm = () => {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    setIngredientList((prev) => [ingredient, ...ingredientList]);
+    setIngredientList((prev) => [...ingredientList, ingredient]);
     setIngredient("");
+  };
+
+  const handleRemove = (text) => {
+    setIngredientList((prev) => prev.filter((item) => item != text));
   };
 
   return (
@@ -20,6 +24,7 @@ const IngredientForm = () => {
       <form className="ingredient-form" onSubmit={handleAdd}>
         <input
           type="text"
+          maxLength={40}
           value={ingredient}
           onChange={(e) => setIngredient(e.target.value)}
           placeholder="What's in your kitchen?"
@@ -36,7 +41,7 @@ const IngredientForm = () => {
       <div className="ingredient-container">
         {ingredientList &&
           ingredientList.map((item, index) => (
-            <Ingredient key={index} text={item} />
+            <Ingredient key={index} text={item} handleRemove={handleRemove} />
           ))}
       </div>
     </div>
