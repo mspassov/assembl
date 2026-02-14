@@ -38,6 +38,25 @@ ul{
     color: inherit;
 }
 
+/* Homepage Styles */
+.generate-btn{
+    display: block;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    background-color: var(--secondary);
+    border-radius: 16px;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.1rem;
+
+    &:hover{
+        background-color: #277374;
+    }
+}
+
 /* Button Common styles */
 .btn{
     border: none;

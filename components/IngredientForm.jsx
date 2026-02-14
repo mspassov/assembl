@@ -5,8 +5,7 @@ import { useState } from "react";
 import "@/assets/ingredientForm.css";
 import { FaPlus } from "react-icons/fa6";
 
-const IngredientForm = () => {
-  const [ingredientList, setIngredientList] = useState([]);
+const IngredientForm = ({ ingredientList, setIngredientList }) => {
   const [ingredient, setIngredient] = useState("");
 
   const handleAdd = (e) => {
