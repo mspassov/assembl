@@ -41,7 +41,7 @@ ul{
 /* Homepage Styles */
 .generate-btn{
     display: block;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 1rem 2rem;
     background-color: var(--secondary);
     border-radius: 16px;
@@ -55,6 +55,14 @@ ul{
     &:hover{
         background-color: #277374;
     }
+}
+
+.recipe-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 0;
+    gap: 2rem;
 }
 
 /* Button Common styles */
