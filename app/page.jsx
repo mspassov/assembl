@@ -12,6 +12,7 @@ const HomePage = () => {
 
   const handleClick = async () => {
     const res = await generateRecipes(ingredientList);
+    localStorage.setItem(`${res.id}`, JSON.stringify(res));
     setRecipeArr((prev) => [res, ...prev]);
   };
 

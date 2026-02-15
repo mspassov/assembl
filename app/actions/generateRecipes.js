@@ -1,7 +1,10 @@
 "use server";
+import {v4 as uuidv4} from 'uuid';
 
 const generateRecipes = async (ingredients) =>{
     const ingredientsString = ingredients.join(", ");
+    // const id = uuidv4();
+    const id = "43f32f34h-df372hffh";
 
     // const res = await fetch("https://api.groq.com/openai/v1/chat/completions",{
     //     method: "POST",
@@ -46,7 +49,7 @@ const generateRecipes = async (ingredients) =>{
     // const result = await res.json();
     // const recipeStr = result.choices[0].message.content;
     // let recipeObj = JSON.parse(recipeStr);
-    let recipeObj = JSON.parse(`{ "allIngredients": [ "chicken breast", "broccoli florets", "penne pasta", "olive oil", "garlic cloves", "onion", "heavy cream", "parmesan cheese", "chicken broth", "salt", "black pepper", "red pepper flakes (optional)" ], "recipeTitle": "Creamy Pasta and Chicken", "instructions": [ "Cut the chicken breast into bite‑size pieces and season with salt and pepper.", "Heat olive oil in a large skillet over medium heat and sauté the chicken until golden and cooked through, then set aside.", "In the same skillet, add chopped onion and minced garlic; cook until fragrant and translucent.", "Add the broccoli florets and sauté for 3–4 minutes until they start to soften.", "Stir in the chicken broth and bring to a simmer, then add the uncooked penne pasta.", "Cook, stirring occasionally, until the pasta is al dente and most of the liquid is absorbed, about 10–12 minutes.", "Reduce heat to low and pour in the heavy cream, stirring to combine.", "Add the cooked chicken back to the pan, then sprinkle with grated Parmesan cheese and red pepper flakes if using.", "Season with additional salt and black pepper to taste, and let the sauce thicken for another 2 minutes.", "Serve hot, garnished with extra Parmesan if desired." ], "cookTime": 35, "description": "A quick, one‑pan creamy pasta dish featuring tender chicken, crisp broccoli, and a rich Parmesan sauce.", "difficulty": "Hard" }`)
+    let recipeObj = JSON.parse(`{"allIngredients": [ "chicken breast", "broccoli florets", "penne pasta", "olive oil", "garlic cloves", "onion", "heavy cream", "parmesan cheese", "chicken broth", "salt", "black pepper", "red pepper flakes (optional)" ], "recipeTitle": "Creamy Pasta and Chicken", "instructions": [ "Cut the chicken breast into bite‑size pieces and season with salt and pepper.", "Heat olive oil in a large skillet over medium heat and sauté the chicken until golden and cooked through, then set aside.", "In the same skillet, add chopped onion and minced garlic; cook until fragrant and translucent.", "Add the broccoli florets and sauté for 3–4 minutes until they start to soften.", "Stir in the chicken broth and bring to a simmer, then add the uncooked penne pasta.", "Cook, stirring occasionally, until the pasta is al dente and most of the liquid is absorbed, about 10–12 minutes.", "Reduce heat to low and pour in the heavy cream, stirring to combine.", "Add the cooked chicken back to the pan, then sprinkle with grated Parmesan cheese and red pepper flakes if using.", "Season with additional salt and black pepper to taste, and let the sauce thicken for another 2 minutes.", "Serve hot, garnished with extra Parmesan if desired." ], "cookTime": 35, "description": "A quick, one‑pan creamy pasta dish featuring tender chicken, crisp broccoli, and a rich Parmesan sauce.", "difficulty": "Hard" }`)
     const title = recipeObj.recipeTitle.split(" ").join("+");
 
     const imgRes = await fetch(`https://api.unsplash.com/search/photos?page=1&per_page=1&orientation=landscape&query=${title}`, {
@@ -58,7 +61,7 @@ const generateRecipes = async (ingredients) =>{
 
     const imgResult = await imgRes.json();
     const imgURL = imgResult.results[0].urls.raw;
-    recipeObj = {...recipeObj, imgURL};
+    recipeObj = {...recipeObj, imgURL, id};
 
     return recipeObj;
 }
