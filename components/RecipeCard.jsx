@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import "@/assets/recipeCard.css";
 import { FaRegClock } from "react-icons/fa6";
 
@@ -12,6 +13,7 @@ const RecipeCard = ({ recipe }) => {
     instructions,
     difficulty,
     imgURL,
+    id,
   } = recipe;
 
   let difficultyColour = "#62cb62";
@@ -22,36 +24,38 @@ const RecipeCard = ({ recipe }) => {
   }
 
   return (
-    <div className="recipe-card">
-      <div className="img-container">
-        <Image
-          alt={recipeTitle}
-          src={imgURL}
-          height={300}
-          width={500}
-          className="recipeImg"
-        />
-      </div>
-      <div className="recipe-details">
-        <h3>{recipeTitle}</h3>
-        <div className="attributes-container">
-          <div className="cooktime">
-            <FaRegClock />
-            <span>{cookTime} minutes</span>
-          </div>
-          <div
-            className="difficulty"
-            style={{ backgroundColor: difficultyColour }}
-          >
-            {difficulty}
-          </div>
+    <Link href={`/recipes/${id}`} className="recipe-link" target="_blank">
+      <div className="recipe-card">
+        <div className="img-container">
+          <Image
+            alt={recipeTitle}
+            src={imgURL}
+            height={300}
+            width={500}
+            className="recipeImg"
+          />
         </div>
-        <p className="description">{description}</p>
-        <p className="ingredients">
-          <strong>Number of Ingredients:</strong> {allIngredients.length}
-        </p>
+        <div className="recipe-details">
+          <h3>{recipeTitle}</h3>
+          <div className="attributes-container">
+            <div className="cooktime">
+              <FaRegClock />
+              <span>{cookTime} minutes</span>
+            </div>
+            <div
+              className="difficulty"
+              style={{ backgroundColor: difficultyColour }}
+            >
+              {difficulty}
+            </div>
+          </div>
+          <p className="description">{description}</p>
+          <p className="ingredients">
+            <strong>Number of Ingredients:</strong> {allIngredients.length}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
