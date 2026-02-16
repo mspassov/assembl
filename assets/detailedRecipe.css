@@ -28,8 +28,20 @@
     border-radius: 16px;
 }
 
+.detailed-recipe .description{
+    margin-top: 2rem;
+    max-width: 600px;
+}
+
 .detailed-recipe h3{
     margin: 48px 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.detailed-recipe .header-icon{
+    color: var(--primary);
 }
 
 .ingredient-list{
@@ -59,3 +71,12 @@
     color: gray;
 }
 
+.instructions-list{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.instructions-list .step{
+    max-width: 600px;
+}
