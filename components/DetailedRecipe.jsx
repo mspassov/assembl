@@ -2,6 +2,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa6";
+import { FaCarrot } from "react-icons/fa6";
+import { FaCircleCheck } from "react-icons/fa6";
 import Image from "next/image";
 import "@/assets/detailedRecipe.css";
 
@@ -36,7 +38,7 @@ const DetailedRecipe = ({ recipeId }) => {
   }
 
   return (
-    <section className="container detailed-recipe">
+    <section className="container-md detailed-recipe">
       <div className="recipe-image">
         <Image
           src={`${imgURL}`}
@@ -57,7 +59,12 @@ const DetailedRecipe = ({ recipeId }) => {
           {difficulty}
         </div>
       </div>
-      <h3>Ingredients:</h3>
+      <p className="description">{description}</p>
+
+      <h3>
+        <FaCarrot className="header-icon" /> <span>Ingredients:</span>
+      </h3>
+
       <ul className="ingredient-list">
         {allIngredients.map((ing, index) => (
           <li className="ingredient" key={index}>
@@ -65,6 +72,19 @@ const DetailedRecipe = ({ recipeId }) => {
               <input type="checkbox" />
               <span>{ing}</span>
             </label>
+          </li>
+        ))}
+      </ul>
+
+      <h3>
+        <FaCircleCheck className="header-icon" />{" "}
+        <span>Step by Step Instructions:</span>
+      </h3>
+
+      <ul className="instructions-list">
+        {instructions.map((step, index) => (
+          <li key={index} className="step">
+            <strong>{index + 1}.</strong> {step}
           </li>
         ))}
       </ul>
