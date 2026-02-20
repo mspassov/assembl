@@ -3,6 +3,7 @@ import React from "react";
 //CSS Imports
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
 import "@/assets/globals.css";
 import { Poppins, Gabarito } from "next/font/google";
 
@@ -27,15 +28,17 @@ const gabarito = Gabarito({
 
 const MainLayout = ({ children }) => {
   return (
-    <html className={`${poppins.variable} ${gabarito.variable}`}>
-      <body className="page-wrapper">
-        <div className="page-content">
-          <Navbar />
-          {children}
-        </div>
-        <Footer />
-      </body>
-    </html>
+    <AuthProvider>
+      <html className={`${poppins.variable} ${gabarito.variable}`}>
+        <body className="page-wrapper">
+          <div className="page-content">
+            <Navbar />
+            {children}
+          </div>
+          <Footer />
+        </body>
+      </html>
+    </AuthProvider>
   );
 };
 

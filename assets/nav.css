@@ -54,3 +54,14 @@ nav .log-in-btn{
         background-color: #45a078;
     }
 }
+
+nav .log-out-btn{
+    border-radius: 12px;
+    padding: 0.5rem 1.2rem;
+    background-color: grey;
+    color: white;
+
+    &:hover {
+        background-color: rgb(81, 81, 81);
+    }
+}
