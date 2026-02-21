@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 import logo from "@/assets/logo.png";
+import profile from "@/assets/defaultProfile.png";
 import "@/assets/nav.css";
 
 const Navbar = () => {
@@ -50,6 +51,13 @@ const Navbar = () => {
                 Recipes
               </Link>
             </li>
+            {sessionData && (
+              <li>
+                <Link href="/cookbook" className="links">
+                  My Cookbook
+                </Link>
+              </li>
+            )}
             <li>
               {!sessionData && (
                 <div>
@@ -66,11 +74,21 @@ const Navbar = () => {
                 </div>
               )}
               {sessionData && (
-                <div>
-                  <div>{sessionData.user.name}</div>
-                  <div>{sessionData.user.email}</div>
-                  <img src={sessionData.user.image} alt="" />
-                  <button className="btn log-out-btn">Log Out</button>
+                <div className="account-details">
+                  <Image
+                    src={
+                      sessionData?.user?.image
+                        ? sessionData.user.image
+                        : profile
+                    }
+                    className="profile-image"
+                    alt="default profile image"
+                    width={40}
+                    height={40}
+                  />
+                  <button onClick={() => signOut()} className="btn log-out-btn">
+                    Log Out
+                  </button>
                 </div>
               )}
             </li>

@@ -65,3 +65,15 @@ nav .log-out-btn{
         background-color: rgb(81, 81, 81);
     }
 }
+
+.account-details{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 24px;
+}
+
+.account-details .profile-image{
+    border-radius: 24px;
+    cursor: pointer;
+}
