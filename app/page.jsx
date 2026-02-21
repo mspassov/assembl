@@ -5,13 +5,16 @@ import { FaBolt } from "react-icons/fa6";
 import IngredientForm from "@/components/IngredientForm";
 import RecipeCard from "@/components/RecipeCard";
 import generateRecipes from "./actions/generateRecipes";
+import { useSession } from "next-auth/react";
 
 const HomePage = () => {
+  const { data: sessionData } = useSession();
+
   const [ingredientList, setIngredientList] = useState([]);
   const [recipeArr, setRecipeArr] = useState([]);
 
   const handleClick = async () => {
-    const res = await generateRecipes(ingredientList);
+    const res = await generateRecipes(ingredientList, sessionData);
     localStorage.setItem(`${res.id}`, JSON.stringify(res));
     setRecipeArr((prev) => [res, ...prev]);
   };
@@ -32,6 +35,10 @@ const HomePage = () => {
         <FaBolt className="fa-bolt" />
         <span>Generate Recipes</span>
       </button>
+
+      {!sessionData && (
+        <p className="login-toast">Log in to save your recipes!</p>
+      )}
 
       <div className="recipe-container">
         {recipeArr &&

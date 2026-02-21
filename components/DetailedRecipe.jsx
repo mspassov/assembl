@@ -16,7 +16,11 @@ const DetailedRecipe = ({ recipeId }) => {
   }, [recipeId]);
 
   if (recipe == null) {
-    return <p>Loading...</p>;
+    return (
+      <div className="container-md">
+        <p>Loading...</p>
+      </div>
+    );
   }
 
   const {
