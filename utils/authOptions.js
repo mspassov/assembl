@@ -1,4 +1,6 @@
 import GoogleProvider from 'next-auth/providers/google';
+import connectDB from '@/config/database';
+import User from '@/models/User';
 
 const authOptions = {
     providers: [
@@ -17,16 +19,25 @@ const authOptions = {
     callbacks: {
         //Triggered on Sucessful Sign-In
         async signIn({profile}) {
-            // To-Do
-            console.log(profile);
+            await connectDB();
+            const userExists = await User.findOne({email: profile.email});
+
+            if(!userExists){
+                await User.create({
+                    email: profile.email,
+                    username: profile.name,
+                    image: profile.picture 
+                })
+            }
             return true;
         },
 
         //Session Callback function that modifies the session
         async session({session}){
-            const user = session.user.email;
+            await connectDB();
+            const user = await User.findOne({email: session.user.email});
 
-            session.user.id = user;
+            session.user.id = user._id.toString();
 
             return session;
         }

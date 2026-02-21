@@ -80,6 +80,13 @@ ul{
     gap: 2rem;
 }
 
+.login-toast{
+    text-align: center;
+    color: rgb(44, 44, 44)
+}
+
+
+
 /* Footer Styles */
 footer{
     background-color: #22577A;

@@ -1,10 +1,12 @@
 "use server";
+import connectDB from '@/config/database';
+import Recipe from '@/models/Recipe';
 import {v4 as uuidv4} from 'uuid';
 
-const generateRecipes = async (ingredients) =>{
+const generateRecipes = async (ingredients, session) =>{
     const ingredientsString = ingredients.join(", ");
     const id = uuidv4();
-    //const id = "43f32f34h-df372hffh";
+    await connectDB();
 
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions",{
         method: "POST",
@@ -62,6 +64,20 @@ const generateRecipes = async (ingredients) =>{
     const imgResult = await imgRes.json();
     const imgURL = imgResult.results[0].urls.raw;
     recipeObj = {...recipeObj, imgURL, id};
+
+    if(session){
+        const newRecipe = new Recipe({
+            author: session.user.id,
+            recipeTitle: recipeObj.recipeTitle,
+            description: recipeObj.description,
+            cookTime: recipeObj.cookTime,
+            allIngredients: recipeObj.allIngredients,
+            instructions: recipeObj.instructions,
+            difficulty: recipeObj.difficulty,
+            imgURL
+        })
+        await newRecipe.save();
+    }
 
     return recipeObj;
 }
