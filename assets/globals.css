@@ -85,6 +85,13 @@ ul{
     color: rgb(44, 44, 44)
 }
 
+/* All Recipes Styles */
+.recipes-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
 
 
 /* Footer Styles */
