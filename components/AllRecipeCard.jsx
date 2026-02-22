@@ -1,15 +1,25 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import "@/assets/allRecipeCard.css";
+import { useState } from "react";
 import { FaRegClock } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
 
 const AllRecipeCard = ({ recipe }) => {
+  const [saved, setSaved] = useState(false);
+
   let difficultyColour = "#62cb62";
   if (recipe.difficulty == "Medium") {
     difficultyColour = "#f8fd76";
   } else if (recipe.difficulty == "Hard") {
     difficultyColour = "#e97c7c";
   }
+
+  const handleClick = () => {
+    setSaved((prev) => !prev);
+  };
 
   return (
     <div className="all-recipe-card">
@@ -40,9 +50,12 @@ const AllRecipeCard = ({ recipe }) => {
           Number of Ingredients: {recipe.allIngredients.length}
         </p>
         <p className="submission">
-          <i>Author: </i>
-          {recipe.author.username}
+          <i>Author: {recipe.author.username}</i>
         </p>
+        <button onClick={handleClick} className="btn save-btn">
+          {!saved ? <FaRegHeart /> : <FaHeart className="saved-heart" />}
+          <span>Save</span>
+        </button>
       </div>
     </div>
   );

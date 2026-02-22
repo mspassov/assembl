@@ -5,7 +5,17 @@ import AllRecipeCard from "@/components/AllRecipeCard";
 
 const AllRecipesPage = async () => {
   await connectDB();
-  const recipes = await Recipe.find({}).populate("author").lean();
+  const recipesRaw = await Recipe.find({}).populate("author").lean();
+
+  //Need to serialize the object, before passing it as props
+  const recipes = recipesRaw.map((recipe) => ({
+    ...recipe,
+    _id: recipe._id.toString(),
+    author: {
+      ...recipe.author,
+      _id: recipe.author._id.toString(),
+    },
+  }));
 
   return (
     <section className="container-md recipes-grid">

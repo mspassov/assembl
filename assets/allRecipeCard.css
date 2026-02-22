@@ -42,10 +42,29 @@
 }
 
 .all-recipe-card .num-ingredients{
-    margin-top: 10px;
+    margin-top: 16px;
 }
 
 .all-recipe-card .submission{
     margin-top: 10px;
+}
+
+.save-btn{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    background-color: #194d4e;
+    padding: 6px 12px;
+    border-radius: 12px;
+    color: white;
+
+    &:hover{
+        background-color: var(--secondary);
+    }
+}
+
+.save-btn .saved-heart{
+    color: rgb(250, 64, 64);
 }
 
