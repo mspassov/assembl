@@ -2,14 +2,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import "@/assets/allRecipeCard.css";
 import { useState } from "react";
 import { FaRegClock } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
+import { toast } from "react-toastify";
 
 const AllRecipeCard = ({ recipe }) => {
   const [saved, setSaved] = useState(false);
+  const { data: sessionData } = useSession();
 
   let difficultyColour = "#62cb62";
   if (recipe.difficulty == "Medium") {
@@ -18,13 +21,37 @@ const AllRecipeCard = ({ recipe }) => {
     difficultyColour = "#e97c7c";
   }
 
-  const handleClick = () => {
-    setSaved((prev) => !prev);
+  const handleSave = () => {
+    if (sessionData) {
+      setSaved((prev) => !prev);
+      if (!saved) {
+        toast.success("Recipe has been saved to your cookbook!", {
+          autoClose: 4000,
+          theme: "colored",
+        });
+      }
+
+      if (saved) {
+        toast.success("Recipe has been removed from your cookbook!", {
+          autoClose: 4000,
+          theme: "colored",
+        });
+      }
+    } else {
+      toast.error("Please login to save recipes!", {
+        autoClose: 4000,
+        theme: "colored",
+      });
+    }
   };
 
   return (
-    <Link href={`/recipes/${recipe._id}`} className="recipe-link" target="_blank">
-      <div className="all-recipe-card">
+    <div className="all-recipe-card">
+      <Link
+        href={`/recipes/${recipe._id}`}
+        className="recipe-link"
+        target="_blank"
+      >
         <Image
           src={recipe.imgURL}
           alt={recipe.recipeTitle}
@@ -32,7 +59,13 @@ const AllRecipeCard = ({ recipe }) => {
           width={150}
           className="all-recipe-card-img"
         />
-        <div className="all-recipe-card-content">
+      </Link>
+      <div className="all-recipe-card-content">
+        <Link
+          href={`/recipes/${recipe._id}`}
+          className="recipe-link"
+          target="_blank"
+        >
           <p className="title">
             <strong>{recipe.recipeTitle}</strong>
           </p>
@@ -54,13 +87,13 @@ const AllRecipeCard = ({ recipe }) => {
           <p className="submission">
             <i>Author: {recipe.author.username}</i>
           </p>
-          <button onClick={handleClick} className="btn save-btn">
-            {!saved ? <FaRegHeart /> : <FaHeart className="saved-heart" />}
-            <span>Save</span>
-          </button>
-        </div>
+        </Link>
+        <button onClick={handleSave} className="btn save-btn">
+          {!saved ? <FaRegHeart /> : <FaHeart className="saved-heart" />}
+          <span>Save</span>
+        </button>
       </div>
-    </Link>
+    </div>
   );
 };
 
