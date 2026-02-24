@@ -7,13 +7,17 @@ import { FaCircleCheck } from "react-icons/fa6";
 import Image from "next/image";
 import "@/assets/detailedRecipe.css";
 
-const DetailedRecipe = ({ recipeId }) => {
+const DetailedRecipe = ({ recipeId, savedRecipe }) => {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(recipeId);
-    setRecipe(JSON.parse(stored));
-  }, [recipeId]);
+    if (!savedRecipe) {
+      const stored = localStorage.getItem(recipeId);
+      setRecipe(JSON.parse(stored));
+    } else {
+      setRecipe(savedRecipe);
+    }
+  }, [recipeId, savedRecipe]);
 
   if (recipe == null) {
     return (

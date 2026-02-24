@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
 import "@/assets/globals.css";
 import { Poppins, Gabarito } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "assembl | Home",
@@ -36,6 +38,7 @@ const MainLayout = ({ children }) => {
             {children}
           </div>
           <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>
