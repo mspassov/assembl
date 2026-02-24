@@ -53,6 +53,11 @@ ul{
     color: inherit;
 }
 
+.recipe-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Homepage Styles */
 .generate-btn{
     display: block;
