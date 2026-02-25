@@ -9,6 +9,7 @@ import { FaRegClock } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import { toast } from "react-toastify";
+import bookmarkRecipe from "@/app/actions/bookmarkRecipe.js";
 
 const AllRecipeCard = ({ recipe }) => {
   const [saved, setSaved] = useState(false);
@@ -21,9 +22,11 @@ const AllRecipeCard = ({ recipe }) => {
     difficultyColour = "#e97c7c";
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (sessionData) {
+      const res = await bookmarkRecipe(recipe._id, sessionData.user.id);
       setSaved((prev) => !prev);
+
       if (!saved) {
         toast.success("Recipe has been saved to your cookbook!", {
           autoClose: 4000,
