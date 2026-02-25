@@ -8,14 +8,20 @@ const AllRecipesPage = async () => {
   const recipesRaw = await Recipe.find({}).populate("author").lean();
 
   //Need to serialize the object, before passing it as props
-  const recipes = recipesRaw.map((recipe) => ({
-    ...recipe,
-    _id: recipe._id.toString(),
-    author: {
-      ...recipe.author,
-      _id: recipe.author._id.toString(),
-    },
-  }));
+  const recipes = JSON.parse(
+    JSON.stringify(
+      recipesRaw.map((recipe) => ({
+        ...recipe,
+        _id: recipe._id.toString(),
+        author: recipe.author
+          ? {
+              ...recipe.author,
+              _id: recipe.author._id.toString(),
+            }
+          : null,
+      })),
+    ),
+  );
 
   return (
     <section className="container-md recipes-grid">
