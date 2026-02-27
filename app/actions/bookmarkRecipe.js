@@ -4,7 +4,6 @@ import connectDB from "@/config/database";
 import { revalidatePath } from "next/cache";
 
 const bookmarkRecipe = async (recipeId, userId) =>{
-    console.log(recipeId, userId);
     await connectDB();
 
     const user = await User.findById(userId);
