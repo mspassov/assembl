@@ -4,16 +4,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import "@/assets/allRecipeCard.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import bookmarkRecipe from "@/app/actions/bookmarkRecipe.js";
+import checkRecipeSaved from "@/app/actions/checkRecipeSaved";
 
 const AllRecipeCard = ({ recipe }) => {
   const [saved, setSaved] = useState(false);
   const { data: sessionData } = useSession();
+
+  useEffect(() => {
+    const checkSaved = async () => {
+      //If user is not logged in, then we cannot query the database
+      if (!sessionData) {
+        return;
+      }
+      const res = await checkRecipeSaved(recipe._id, sessionData.user.id);
+      setSaved(res.isSaved);
+    };
+
+    checkSaved();
+  }, [saved, recipe._id, checkRecipeSaved]);
 
   let difficultyColour = "#62cb62";
   if (recipe.difficulty == "Medium") {
