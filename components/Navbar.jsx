@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-
 import logo from "@/assets/logo.png";
 import profile from "@/assets/defaultProfile.png";
+import SideProfile from "./SideProfile";
 import "@/assets/nav.css";
 
 const Navbar = () => {
   const [providers, setProviders] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -85,6 +86,7 @@ const Navbar = () => {
                     alt="default profile image"
                     width={40}
                     height={40}
+                    onClick={() => setIsOpen(!isOpen)}
                   />
                   <button onClick={() => signOut()} className="btn log-out-btn">
                     Log Out
@@ -95,6 +97,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+      <SideProfile isOpen={isOpen} setIsOpen={setIsOpen} />
     </nav>
   );
 };
