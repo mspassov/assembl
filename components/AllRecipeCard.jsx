@@ -101,9 +101,11 @@ const AllRecipeCard = ({ recipe }) => {
           <p className="num-ingredients">
             Number of Ingredients: {recipe.allIngredients.length}
           </p>
-          <p className="submission">
-            <i>Author: {recipe.author.username}</i>
-          </p>
+          {recipe.author.username && (
+            <p className="submission">
+              <i>Author: {recipe.author.username}</i>
+            </p>
+          )}
         </Link>
         <button onClick={handleSave} className="btn save-btn">
           {!saved ? <FaRegHeart /> : <FaHeart className="saved-heart" />}
