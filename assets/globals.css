@@ -104,8 +104,51 @@ footer{
     background-color: #22577A;
     padding: 2rem;
     margin-top: 2rem;
-    text-align: center;
     color: white;
+
+}
+
+.footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.source-container{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover{
+        color: var(--accent);
+    }
+}
+
+.contact-container{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+li .linkedin{
+    display: flex;
+    align-items: center;
+}
+
+.linkedin{
+    font-size: 1.5rem;
+    color: white;
+    &:hover {
+            color: var(--accent);
+        }
+}
+
+.portfolio {
+    color: white;
+
+    &:hover {
+        color: var(--accent);
+    }
 }
 
 /* Button Common styles */
