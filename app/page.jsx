@@ -20,7 +20,7 @@ const HomePage = () => {
   };
 
   return (
-    <section className="container">
+    <section className="container hero">
       <h2>Add ingredients you already have, and get new recipes in seconds!</h2>
       <IngredientForm
         ingredientList={ingredientList}

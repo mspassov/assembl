@@ -45,3 +45,15 @@ form .ingredient-submit{
     grid-template-columns: repeat(3, 1fr);
 }
 
+@media (max-width: 690px) {
+    .ingredient-form{
+        margin: 0 10px;
+        gap: 10px;
+    }
+
+    .ingredient-container{
+        grid-template-columns: 1fr 1fr;
+        margin: 3rem 0.5rem;
+    }
+}
+

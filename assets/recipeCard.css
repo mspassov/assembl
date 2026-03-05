@@ -49,3 +49,29 @@
 .recipe-details .description{
     margin: 1rem 0;
 }
+
+@media (max-width: 800px){
+    .recipe-card{
+        flex-direction: column;
+        height: auto;
+        max-width: 400px;
+    }
+
+    .recipeImg{
+        max-width: 400px;
+        height: auto;
+    }
+}
+
+@media (max-width: 450px){
+    .recipe-card{
+        flex-direction: column;
+        height: auto;
+        max-width: 380px;
+    }
+
+    .recipeImg{
+        max-width: 380px;
+        height: auto;
+    }
+}

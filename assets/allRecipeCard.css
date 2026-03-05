@@ -67,3 +67,32 @@
     color: rgb(250, 64, 64);
 }
 
+@media (max-width: 1000px) {
+    .all-recipe-card-img {
+        width: 440px;
+        height: auto;
+    }
+}
+
+@media (max-width: 910px) {
+    .all-recipe-card{
+        width: 450px;
+    }
+
+    .all-recipe-card-img {
+        width: 450px;
+        height: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .all-recipe-card{
+        width: 390px;
+    }
+
+    .all-recipe-card-img {
+        width: 390px;
+        height: auto;
+    }
+}
+

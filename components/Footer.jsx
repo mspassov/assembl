@@ -16,7 +16,7 @@ const Footer = () => {
         >
           <FaGithub /> <span>Source Code</span>
         </Link>
-        <div>&copy; {year} Assembl Development. All rights reserved.</div>
+        <div>&copy; {year} Assembl Dev. All rights reserved.</div>
         <ul className="contact-container">
           <li>
             <Link
