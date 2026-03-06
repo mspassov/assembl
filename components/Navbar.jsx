@@ -109,18 +109,30 @@ const Navbar = () => {
           </div>
           <ul className={`mobile-container ${isOpenMobile ? "show" : "close"}`}>
             <li>
-              <Link href="/" className="links">
+              <Link
+                href="/"
+                className="links"
+                onClick={() => setIsOpenMobile(!isOpenMobile)}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/recipes" className="links">
+              <Link
+                href="/recipes"
+                className="links"
+                onClick={() => setIsOpenMobile(!isOpenMobile)}
+              >
                 Recipes
               </Link>
             </li>
             {sessionData && (
               <li>
-                <Link href="/cookbook" className="links">
+                <Link
+                  href="/cookbook"
+                  className="links"
+                  onClick={() => setIsOpenMobile(!isOpenMobile)}
+                >
                   My Cookbook
                 </Link>
               </li>

@@ -111,6 +111,11 @@ ul{
         gap: 20px;
         align-items: center;
     }
+
+    .cookbook-container h2,
+    .cookbook-container p{
+        margin: 20px 20px;
+    }
 }
 
 

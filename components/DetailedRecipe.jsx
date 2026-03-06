@@ -55,47 +55,49 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
           style={{ objectFit: "cover" }}
         />
       </div>
-      <h2>{recipeTitle}</h2>
-      <div className="attributes-container">
-        <div className="cooktime">
-          <FaRegClock /> <span>{cookTime} Minutes</span>
+      <div className="recipe-content">
+        <h2>{recipeTitle}</h2>
+        <div className="attributes-container">
+          <div className="cooktime">
+            <FaRegClock /> <span>{cookTime} Minutes</span>
+          </div>
+          <div
+            className="difficulty"
+            style={{ backgroundColor: `${difficultyColour}` }}
+          >
+            {difficulty}
+          </div>
         </div>
-        <div
-          className="difficulty"
-          style={{ backgroundColor: `${difficultyColour}` }}
-        >
-          {difficulty}
-        </div>
+        <p className="description">{description}</p>
+
+        <h3>
+          <FaCarrot className="header-icon" /> <span>Ingredients:</span>
+        </h3>
+
+        <ul className="ingredient-list">
+          {allIngredients.map((ing, index) => (
+            <li className="ingredient" key={index}>
+              <label className="ingredient-item">
+                <input type="checkbox" />
+                <span>{ing}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+
+        <h3>
+          <FaCircleCheck className="header-icon" />{" "}
+          <span>Step by Step Instructions:</span>
+        </h3>
+
+        <ul className="instructions-list">
+          {instructions.map((step, index) => (
+            <li key={index} className="step">
+              <strong>{index + 1}.</strong> {step}
+            </li>
+          ))}
+        </ul>
       </div>
-      <p className="description">{description}</p>
-
-      <h3>
-        <FaCarrot className="header-icon" /> <span>Ingredients:</span>
-      </h3>
-
-      <ul className="ingredient-list">
-        {allIngredients.map((ing, index) => (
-          <li className="ingredient" key={index}>
-            <label className="ingredient-item">
-              <input type="checkbox" />
-              <span>{ing}</span>
-            </label>
-          </li>
-        ))}
-      </ul>
-
-      <h3>
-        <FaCircleCheck className="header-icon" />{" "}
-        <span>Step by Step Instructions:</span>
-      </h3>
-
-      <ul className="instructions-list">
-        {instructions.map((step, index) => (
-          <li key={index} className="step">
-            <strong>{index + 1}.</strong> {step}
-          </li>
-        ))}
-      </ul>
     </section>
   );
 };

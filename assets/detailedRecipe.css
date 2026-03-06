@@ -80,3 +80,9 @@
 .instructions-list .step{
     max-width: 600px;
 }
+
+@media (max-width: 900px){
+    .recipe-content{
+        margin: auto 16px;
+    }
+}
