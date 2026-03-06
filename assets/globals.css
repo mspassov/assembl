@@ -77,6 +77,10 @@ ul{
     }
 }
 
+.hero h2{
+    margin-bottom: 4rem;
+}
+
 .recipe-container{
     display: flex;
     flex-direction: column;
