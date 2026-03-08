@@ -62,7 +62,7 @@ const generateRecipes = async (ingredients, session) =>{
     });
 
     const imgResult = await imgRes.json();
-    const imgURL = imgResult.results[0].urls.raw;
+    const imgURL = imgResult.results[0]?.urls.raw; //Add fallback if no URL
     recipeObj = {...recipeObj, imgURL, id};
 
     if(session){

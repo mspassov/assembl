@@ -7,16 +7,21 @@ import RecipeCard from "@/components/RecipeCard";
 import generateRecipes from "./actions/generateRecipes";
 import { useSession } from "next-auth/react";
 
+import { DotLoader } from "react-spinners";
+
 const HomePage = () => {
   const { data: sessionData } = useSession();
 
   const [ingredientList, setIngredientList] = useState([]);
   const [recipeArr, setRecipeArr] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
+    setIsLoading(true);
     const res = await generateRecipes(ingredientList, sessionData);
     localStorage.setItem(`${res.id}`, JSON.stringify(res));
     setRecipeArr((prev) => [res, ...prev]);
+    setIsLoading(false);
   };
 
   return (
@@ -40,12 +45,20 @@ const HomePage = () => {
         <p className="login-toast">Log in to save your recipes!</p>
       )}
 
-      <div className="recipe-container">
-        {recipeArr &&
-          recipeArr.map((recipe, index) => (
-            <RecipeCard key={index} recipe={recipe} />
-          ))}
-      </div>
+      {isLoading ? (
+        <DotLoader
+          color="#22577A"
+          cssOverride={{ margin: "75px auto", display: "block" }}
+          size={80}
+        />
+      ) : (
+        <div className="recipe-container">
+          {recipeArr &&
+            recipeArr.map((recipe, index) => (
+              <RecipeCard key={index} recipe={recipe} />
+            ))}
+        </div>
+      )}
     </section>
   );
 };
