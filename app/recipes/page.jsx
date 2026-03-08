@@ -3,6 +3,10 @@ import connectDB from "@/config/database";
 import Recipe from "@/models/Recipe";
 import AllRecipeCard from "@/components/AllRecipeCard";
 
+export const metadata = {
+  title: "assembl | Recipes"
+}
+
 const AllRecipesPage = async () => {
   await connectDB();
   const recipesRaw = await Recipe.find({}).populate("author").lean();

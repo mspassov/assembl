@@ -7,6 +7,10 @@ import AllRecipeCard from "@/components/AllRecipeCard";
 import authOptions from "@/utils/authOptions";
 import User from "@/models/User";
 
+export const metadata = {
+  title: "assembl | Bookmarks",
+};
+
 const CookbookPage = async () => {
   const session = await getServerSession(authOptions);
   await connectDB();
