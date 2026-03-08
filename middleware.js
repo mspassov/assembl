@@ -1,7 +1,7 @@
-export {default} from 'next-auth/middleware';
+export {withAuth} from 'next-auth/middleware';
+
+export default withAuth();
 
 export const config = {
-    matcher: [
-        '/cookbook'
-    ]
+    matcher: ['/cookbook']
 }
