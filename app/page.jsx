@@ -8,7 +8,6 @@ import generateRecipes from "./actions/generateRecipes";
 import { useSession } from "next-auth/react";
 
 const HomePage = () => {
-
   const { data: sessionData } = useSession();
 
   const [ingredientList, setIngredientList] = useState([]);
