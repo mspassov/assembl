@@ -14,7 +14,7 @@ import { FaBars } from "react-icons/fa6";
 const Navbar = () => {
   const [providers, setProviders] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpenMobile, setIsOpenMobile] = useState(true);
+  const [isOpenMobile, setIsOpenMobile] = useState(false);
 
   useEffect(() => {
     const setAuthProviders = async () => {
