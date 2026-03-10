@@ -14,6 +14,7 @@ export const metadata = {
   keywords: "AI, food, fridge, cooking, recipes",
   description:
     "Decide on your next meal by adding all of your ingredients in the fridge, and getting custom-made recipes",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 const poppins = Poppins({
