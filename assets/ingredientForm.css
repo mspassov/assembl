@@ -51,17 +51,19 @@ form .ingredient-submit{
         gap: 10px;
     }
 
+    .ingredient-form input{
+        width: 400px;
+    }
+
     .ingredient-container{
         grid-template-columns: 1fr 1fr;
         margin: 3rem 0.5rem;
     }
 }
 
-@media (max-width: 400px) {
-    .ingredient-form{
-        margin: 0 10px;
-        padding: 0 10px;
-        gap: 10px;
+@media (max-width: 450px) {
+    .ingredient-form input{
+        width: 270px;
     }
 }
 
