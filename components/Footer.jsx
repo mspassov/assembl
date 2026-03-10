@@ -21,7 +21,7 @@ const Footer = () => {
           <li>
             <Link
               className="links"
-              href="https://github.com/mspassov/assembl"
+              href="https://www.linkedin.com/in/mspassov"
               target="_blank"
             >
               <FaLinkedin className="linkedin" />
