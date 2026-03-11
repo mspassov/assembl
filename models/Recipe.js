@@ -31,6 +31,9 @@ const RecipeSchema = new Schema({
     difficulty: {
         type: String
     },
+    calories: {
+        type: Number
+    },
     imgURL: {
         type: String
     },

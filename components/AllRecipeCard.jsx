@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { FaRegClock } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa6";
+import { FaFireFlameCurved } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import bookmarkRecipe from "@/app/actions/bookmarkRecipe.js";
 import checkRecipeSaved from "@/app/actions/checkRecipeSaved";
@@ -89,13 +90,17 @@ const AllRecipeCard = ({ recipe }) => {
           <div className="recipe-badges">
             <div className="time">
               <FaRegClock />
-              <span>{recipe.cookTime} minutes</span>
+              <span>{recipe.cookTime} min</span>
             </div>
             <div
               className="difficulty"
               style={{ backgroundColor: difficultyColour }}
             >
               {recipe.difficulty}
+            </div>
+            <div className="calories">
+              <FaFireFlameCurved className="flame" />
+              <span>{recipe.calories ? recipe.calories : "N/A"} cal.</span>
             </div>
           </div>
           <p className="num-ingredients">

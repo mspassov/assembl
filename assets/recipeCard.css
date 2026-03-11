@@ -29,21 +29,26 @@
     margin-bottom: 0.5rem;
 }
 
-.recipe-details .cooktime{
+.recipe-details .cooktime,
+.recipe-details .calories{
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 5px;
 }
 
 .recipe-details .attributes-container{
     display: flex;
-    gap: 16px;
+    gap: 20px;
 }
 
 .recipe-details .difficulty{
     padding: 1px 8px;
     align-items: center;
     border-radius: 16px;
+}
+
+.recipe-details .flame{
+    color: orange;
 }
 
 .recipe-details .description{

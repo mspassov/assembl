@@ -1,14 +1,20 @@
 "use client";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { FaRegClock } from "react-icons/fa6";
 import { FaCarrot } from "react-icons/fa6";
-import { FaCircleCheck } from "react-icons/fa6";
+import { FaCircleCheck, FaRegHeart, FaHeart } from "react-icons/fa6";
+import { FaFireFlameCurved } from "react-icons/fa6";
 import Image from "next/image";
+import { toast } from "react-toastify";
+import bookmarkRecipe from "@/app/actions/bookmarkRecipe";
 import "@/assets/detailedRecipe.css";
 
 const DetailedRecipe = ({ recipeId, savedRecipe }) => {
   const [recipe, setRecipe] = useState(null);
+  const [saved, setSaved] = useState(false);
+  const { data: sessionData } = useSession();
 
   useEffect(() => {
     if (!savedRecipe) {
@@ -35,6 +41,7 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
     instructions,
     difficulty,
     imgURL,
+    calories,
     id,
   } = recipe;
 
@@ -44,6 +51,32 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
   } else if (difficulty == "Hard") {
     difficultyColour = "#e97c7c";
   }
+
+  const handleSave = async () => {
+    if (sessionData) {
+      const res = await bookmarkRecipe(recipe._id, sessionData.user.id);
+      setSaved((prev) => !prev);
+
+      if (!saved) {
+        toast.success("Recipe has been saved to your cookbook!", {
+          autoClose: 4000,
+          theme: "colored",
+        });
+      }
+
+      if (saved) {
+        toast.success("Recipe has been removed from your cookbook!", {
+          autoClose: 4000,
+          theme: "colored",
+        });
+      }
+    } else {
+      toast.error("Please login to save recipes!", {
+        autoClose: 4000,
+        theme: "colored",
+      });
+    }
+  };
 
   return (
     <section className="container-md detailed-recipe">
@@ -56,7 +89,13 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
         />
       </div>
       <div className="recipe-content">
-        <h2>{recipeTitle}</h2>
+        <h2>
+          {recipeTitle}{" "}
+          <button onClick={handleSave} className="btn save-btn">
+            {!saved ? <FaRegHeart /> : <FaHeart className="saved-heart" />}
+            <span>Save</span>
+          </button>
+        </h2>
         <div className="attributes-container">
           <div className="cooktime">
             <FaRegClock /> <span>{cookTime} Minutes</span>
@@ -66,6 +105,10 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
             style={{ backgroundColor: `${difficultyColour}` }}
           >
             {difficulty}
+          </div>
+          <div className="calories">
+            <FaFireFlameCurved className="flame" />
+            <span>{recipe.calories ? recipe.calories : "N/A"} Calories</span>
           </div>
         </div>
         <p className="description">{description}</p>
