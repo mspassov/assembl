@@ -22,17 +22,22 @@
     height: auto;
 }
 
-.all-recipe-card .time{
+.all-recipe-card .time,
+.all-recipe-card .calories{
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 5px;
     margin-top: 10px;
 }
 
 .recipe-badges{
     display: flex;
-    gap: 12px;
+    gap: 16px;
     align-items: end;
+}
+
+.recipe-badges .flame{
+    color: orange
 }
 
 .recipe-badges .difficulty{

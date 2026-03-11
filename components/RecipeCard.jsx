@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "@/assets/recipeCard.css";
 import { FaRegClock } from "react-icons/fa6";
+import { FaFireFlameCurved } from "react-icons/fa6";
 
 const RecipeCard = ({ recipe }) => {
   const {
@@ -11,6 +12,7 @@ const RecipeCard = ({ recipe }) => {
     cookTime,
     allIngredients,
     instructions,
+    calories,
     difficulty,
     imgURL,
     id,
@@ -47,6 +49,10 @@ const RecipeCard = ({ recipe }) => {
               style={{ backgroundColor: difficultyColour }}
             >
               {difficulty}
+            </div>
+            <div className="calories">
+              <FaFireFlameCurved className="flame"/>
+              <span>{calories} Cal.</span>
             </div>
           </div>
           <p className="description">{description}</p>
