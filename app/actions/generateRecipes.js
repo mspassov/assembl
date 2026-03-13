@@ -3,7 +3,7 @@ import connectDB from '@/config/database';
 import Recipe from '@/models/Recipe';
 import {v4 as uuidv4} from 'uuid';
 
-const generateRecipes = async (ingredients, session) =>{
+const generateRecipes = async (ingredients, cuisine, difficulty, session) =>{
     const ingredientsString = ingredients.join(", ");
     const id = uuidv4();
     await connectDB();
@@ -24,7 +24,10 @@ const generateRecipes = async (ingredients, session) =>{
                     role: "user",
                     content: `
                     I will give you a list of ingredients, generate a recipe and return it in JSON format.
-                    Ingredients: ${ingredientsString}
+                    Ingredients: ${ingredientsString}.
+
+                    The recipe cuisine should be: ${cuisine}.
+                    The difficulty should be: ${difficulty}.
 
                     The allIngredients should be all of the ingredients necessary for the recipe.
 
