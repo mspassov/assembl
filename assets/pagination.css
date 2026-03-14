@@ -1,0 +1,19 @@
+.pagination{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 10px auto;
+}
+
+.pagination .pag-btn{
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 8px;
+    padding: 4px 8px;
+
+    &:hover{
+        background-color: rgb(50, 50, 50);
+        color: white;
+    }
+}
+
