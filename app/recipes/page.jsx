@@ -1,6 +1,7 @@
 import React from "react";
 import connectDB from "@/config/database";
 import Recipe from "@/models/Recipe";
+import User from "@/models/User";
 import AllRecipeCard from "@/components/AllRecipeCard";
 import RecipeFilters from "@/components/RecipeFilters";
 import Pagination from "@/components/Pagination";
