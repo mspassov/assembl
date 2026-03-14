@@ -77,7 +77,12 @@ const AllRecipeCard = ({ recipe }) => {
           width={150}
           className="all-recipe-card-img"
         />
-        <div className="cuisine-badge">{recipe.cuisine}</div>
+
+        {recipe?.cuisine ? (
+          <div className="cuisine-badge">{recipe.cuisine}</div>
+        ) : (
+          <div className="cuisine-badge">Global</div>
+        )}
       </Link>
       <div className="all-recipe-card-content">
         <Link

@@ -117,7 +117,7 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
             <span>{calories ? calories : "N/A"} Calories</span>
           </div>
           <div className="cuisine">
-            <span>{cuisine}</span>
+            <span>{cuisine == "" ? "Global" : cuisine}</span>
           </div>
         </div>
 
