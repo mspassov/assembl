@@ -10,6 +10,9 @@ const RecipeSchema = new Schema({
         type: String,
         require: true
     },
+    cuisine:{
+        type: String,
+    },
     description: {
         type: String,
         require: true
