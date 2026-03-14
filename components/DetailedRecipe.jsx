@@ -8,6 +8,7 @@ import { FaCircleCheck, FaRegHeart, FaHeart } from "react-icons/fa6";
 import { FaFireFlameCurved } from "react-icons/fa6";
 import Image from "next/image";
 import { toast } from "react-toastify";
+import { DotLoader } from "react-spinners";
 import bookmarkRecipe from "@/app/actions/bookmarkRecipe";
 import "@/assets/detailedRecipe.css";
 
@@ -28,7 +29,11 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
   if (recipe == null) {
     return (
       <div className="container-md">
-        <p>Loading...</p>
+        <DotLoader
+          color="#22577A"
+          cssOverride={{ margin: "75px auto", display: "block" }}
+          size={80}
+        />
       </div>
     );
   }
@@ -42,6 +47,7 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
     difficulty,
     imgURL,
     calories,
+    cuisine,
     id,
   } = recipe;
 
@@ -104,13 +110,17 @@ const DetailedRecipe = ({ recipeId, savedRecipe }) => {
             className="difficulty"
             style={{ backgroundColor: `${difficultyColour}` }}
           >
-            {difficulty}
+            <span>{difficulty}</span>
           </div>
           <div className="calories">
             <FaFireFlameCurved className="flame" />
-            <span>{recipe.calories ? recipe.calories : "N/A"} Calories</span>
+            <span>{calories ? calories : "N/A"} Calories</span>
+          </div>
+          <div className="cuisine">
+            <span>{cuisine}</span>
           </div>
         </div>
+
         <p className="description">{description}</p>
 
         <h3>

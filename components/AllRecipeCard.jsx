@@ -67,7 +67,7 @@ const AllRecipeCard = ({ recipe }) => {
     <div className="all-recipe-card">
       <Link
         href={`/recipes/${recipe._id}`}
-        className="recipe-link"
+        className="recipe-link all-recipe-img-container"
         target="_blank"
       >
         <Image
@@ -77,6 +77,7 @@ const AllRecipeCard = ({ recipe }) => {
           width={150}
           className="all-recipe-card-img"
         />
+        <div className="cuisine-badge">{recipe.cuisine}</div>
       </Link>
       <div className="all-recipe-card-content">
         <Link

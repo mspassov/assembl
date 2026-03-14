@@ -93,9 +93,15 @@ const generateRecipes = async (ingredients, cuisine, difficulty, session) =>{
         }
     });
 
+    //Set the final cuisine
+    let finalCuisine = cuisine;
+    if(cuisine == "All"){
+        finalCuisine = "";
+    }
+
     const imgResult = await imgRes.json();
-    const imgURL = imgResult.results[0]?.urls.raw; //Add fallback if no URL
-    recipeObj = {...recipeObj, imgURL, id};
+    const imgURL = imgResult?.results[0]?.urls.raw || "/images/defaultRecipe.jpg"; //Add fallback if no URL
+    recipeObj = {...recipeObj, imgURL, id, cuisine};
 
     if(session){
         const newRecipe = new Recipe({
@@ -107,6 +113,7 @@ const generateRecipes = async (ingredients, cuisine, difficulty, session) =>{
             instructions: recipeObj.instructions,
             difficulty: recipeObj.difficulty,
             calories: recipeObj.calories,
+            cuisine,
             imgURL
         })
         await newRecipe.save();

@@ -24,6 +24,13 @@
     gap: 5px;
 }
 
+.detailed-recipe .cuisine{
+    background-color: rgb(46, 46, 46);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
 .attributes-container .difficulty{
     padding: 2px 10px;
     border-radius: 16px;
@@ -113,5 +120,18 @@
 @media (max-width: 900px){
     .recipe-content{
         margin: auto 16px;
+    }
+}
+
+@media (max-width: 580px){
+    .detailed-recipe .attributes-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .recipe-content h2{
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
