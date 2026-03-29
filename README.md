@@ -12,7 +12,8 @@ Try it here: https://assembl-ai.vercel.app/
 
 **Tech Stack:**
 - NextJS with vanilla CSS for styling
-- Grok AI for the LLM API connection (underlying model is OpenAI)
+- RESTful APIs
+- Groq API for the underlying LLM model (AI model is OpenAI)
 - Unsplash API for the recipe image
 - Google OAuth authentication
 - Deployed to Vercel
